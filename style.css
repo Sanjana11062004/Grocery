@@ -1,33 +1,52 @@
 h2{
     -webkit-text-stroke:2px green ;
     text-transform: uppercase;
+    font-size: 64px;
+    text-align: center;
 }
-h2::before{
-    width: 100%;
-    content: attr(data-text);
-    color: aquamarine;
-    -webkit-text-stroke:0vw white ;
-    border-right: 2px solid aquamarine;
-    overflow: hidden;
-    animation: animate 6s linear infinite;
+p{
+    font-size: 18px;
+    color: white;
+    font-weight: 700;
 }
+
 body{
     margin: 0;
+    background-color: rgb(212, 241, 212);
 }
-section{
+.center{
+    width: 70%;
+    height:50%;
+    text-align: center;
+    background-color: aliceblue;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+header{
     width: auto;
-    height: 80px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
     background-color: green;
-    margin: 0;
-
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
 }
-@keyframes animate{
-    0%,10%,100%{
-        width: 0;
-
-    }
-    70%,90%{
-        width: 100%;
-
-    }
+.grocery-form{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 20px;
 }
+input{
+    background-color:rgb(235, 221, 242);
+    border: none;
+    width:70%;
+    height: 30px;
+    padding-left: 20px;
+    border-radius: 5px;
+}
+img{
+    width: 60px;
+    height: 60px;
+}
+ 
