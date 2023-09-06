@@ -11,6 +11,16 @@ h2::before{
     overflow: hidden;
     animation: animate 6s linear infinite;
 }
+body{
+    margin: 0;
+}
+section{
+    width: auto;
+    height: 80px;
+    background-color: green;
+    margin: 0;
+
+}
 @keyframes animate{
     0%,10%,100%{
         width: 0;
