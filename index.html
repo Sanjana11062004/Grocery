@@ -11,36 +11,76 @@
         <header>
             <img src="/image/food-cart.png">
             <p>Logout</p>
-    </header>
-    <h2 data-text="Welcome to DailyBread grocery ">Welcome to DailyBread grocery </h2>
+        </header>
+        <h2 data-text="Welcome to DailyBread grocery ">Welcome to DailyBread grocery </h2>
     </section>
     <section class="center">
-        <form class="grocery-form">
+        <form class="grocery-form" id="groceryForm">
             <p class="alert"></p>
             <h3>Grocery bud</h3>
             <div class="form-control">
-                <input type="text" placeholder="e.g. eggs">
-                <button type="submit" class="submit-btn">Submit</button>
+                <input type="text" id="groceryInput" placeholder="e.g. eggs">
+                <button type="submit" class="submit-btn">Add</button>
             </div>
         </form>
-        <div class="grocery-cnt">
-            
-            <div class="grocery-list">
-                <article class="grocery-item">
-                    <p class="title">Item</p>
-                    <div class="btn-container">
-                        <button type="button" class="edit-button">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button type="button" class="dlt-button">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </article>
-            </div >
-            <button type="button" class="clear">Clear Items</button>
-        </div>
+       
     </section>
-    
+    <div class="grocery-cnt center">
+        <h2 style="font-size: 30px;" >The Items To Buy:</h2>
+        <ul id="groceryList"></ul>
+        
+    </div>
+    <script>
+        let inputItems = [];
+
+        // Load items from local storage on page load
+        if(localStorage.getItem("inputItems")) {
+            inputItems = JSON.parse(localStorage.getItem("inputItems"));
+            inputItems.forEach(item => {
+                displayInput(item);
+            });
+        }
+
+        document.getElementById("groceryForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const input = document.getElementById("groceryInput").value;
+            if (input.trim() !== "") {
+                inputItems.push(input);
+                localStorage.setItem("inputItems", JSON.stringify(inputItems));
+                displayInput(input);
+                document.getElementById("groceryInput").value = "";
+            }
+        });
+
+        function displayInput(input) {
+            const groceryList = document.getElementById("groceryList");
+            const listItem = document.createElement("li");
+            listItem.textContent = input;
+            
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.classList.add("delete-btn");
+            deleteBtn.addEventListener("click", function() {
+                const index = inputItems.indexOf(input);
+                if (index !== -1) {
+                    inputItems.splice(index, 1);
+                    localStorage.setItem("inputItems", JSON.stringify(inputItems));
+                }
+                listItem.remove();
+            });
+            
+            listItem.appendChild(deleteBtn);
+            groceryList.appendChild(listItem);
+        }
+
+        document.getElementById("viewItemsBtn").addEventListener("click", function() {
+            const groceryList = document.getElementById("groceryList");
+            groceryList.innerHTML = ""; // Clear previous items
+            inputItems.forEach(item => {
+                displayInput(item);
+            });
+        });
+    </script>
 </body>
 </html>
+
