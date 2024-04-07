@@ -1,13 +1,13 @@
 [
-    {"country_id": "GH",
+    {"country_id": "US",
      "probability": 0.209},
 
-    {"country_id": "NG", "probability": 0.096}
+    {"country_id": "INDIA", "probability": 0.096}
     ,
-    {"country_id": "PH", "probability": 0.074},
+    {"country_id": "EUROPE", "probability": 0.074},
 
-    {"country_id": "US", "probability": 0.055},
+    {"country_id": "RUSSIA", "probability": 0.055},
  
-    {"country_id": "NE", "probability": 0.048}
+    {"country_id": "NEW YORK", "probability": 0.048}
 
 ]

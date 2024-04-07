@@ -77,4 +77,10 @@ img{
 #groceryList li{
     margin-top: 20px;
 }
- 
+.display-cnt{
+    text-align: center;
+    font-size: 40px;
+    color: cadetblue;
+    font-weight: 600;
+    list-style: none;
+}
